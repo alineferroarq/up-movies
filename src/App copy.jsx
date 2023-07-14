@@ -3,23 +3,23 @@ import { useState } from "react"
 
 
 function App() {
-  const [fields, setFields] = useState({
-    titulo:'',
-    sinopse:'',
-    votos:'',
-  })
-  
+  const [titulo, setTitulo] = useState('')
+  const [sinopse, setSinopse] = useState('o filme é de terror')
   const adicionar = event => {
-    event.preventDefault()
-    console.log('add', fields)
+    e.preventDefault()
+    console.log('add', titulo, sinopse)
 
   }
 
-  const atualizaInput = event =>{
-    console.log(event.target.id)
-    setFields({ ...fields, [event.target.id]: event.target.value })
+  const atualizaInput = event => {
+    console.log('atulizaInput', event.target.value);
+    setTitulo(event.target.titulo)
+
   }
-  
+  const atualizaSinopse = event => {
+    console.log('atualizaSinopse', event.target.value);
+    setSinopse(event.target.titulo)
+  }
 
   return (
     <>
@@ -32,9 +32,8 @@ function App() {
             id="titulo" 
             type="text" 
             className="form-control" 
-            value={fields.titulo} 
-            onChange={atualizaInput}
-             />
+            value={titulo} 
+            onChange={atualizaInput} />
           </div>
           <div className="col-md-12">
             <label htmlFor="sinopse" className="form-label">Sinopse</label>
@@ -42,19 +41,12 @@ function App() {
             id="sinopse" 
             type="text" 
             className="form-control" 
-            value={fields.sinopse}
-            onChange={atualizaInput} 
-            />
+            value={sinopse} 
+            onChange={atualizaSinopse} />
           </div>
           <div className="col-md-12">
             <label htmlFor="" className="form-label">Votos</label>
-            <input
-             id="votos"
-             type="text" 
-             className="form-control"
-             value={fields.votos}
-             onChange={atualizaInput}
-             />
+            <input type="text" className="form-control" />
           </div>
           <button className="btn btn-primary mt-3" onClick={adicionar}>Adicionar</button>
         </form>
@@ -62,6 +54,6 @@ function App() {
 
     </>
   )
-  }
+}
 
   export default App
